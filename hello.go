@@ -286,13 +286,48 @@ func main() {
 	}
 
 
+	aMap := make(map[string]Vertex)
+	aMap["Bell Labs"] = Vertex{
+		452, 586,
+	}
+	fmt.Println("Bell Labs location = ", aMap["Bell Labs"])
 
+	aMap = map[string]Vertex{
+		"Bell Labs": Vertex{
+			56, 96,
+		},
+		"Google": Vertex{
+			556465, 21,
+		},
+	}
+
+	fmt.Println("Bell Labs new location = ", aMap["Bell Labs"])
+
+	aMap = map[string]Vertex{
+		"Bell Labs": {
+			11258, 9966,
+		},
+		"Google": {
+			556465, 21,
+		},
+	}
+
+	fmt.Println("Bell Labs final location = ", aMap["Bell Labs"])
+
+	aMap["mars"] = Vertex{234, 234}
+	fmt.Println("The value ", aMap["mars"])
+
+	delete(aMap, "mars")
+	fmt.Println("The value ", aMap["mars"])
+
+	val1, ok := aMap["Answer"]
+	fmt.Println("The value:", val1, "Present?", ok)
 }
 
 
 func Pic(dx, dy int) [][]uint8 {
 	var finalPic  [][]uint8
-	for y:=0; y < dy; y+=1 {
+	for y:=0; y < dy; y++ {
 		var row []uint8
 		row = make([]uint8, dx)
 		for i := range row {
